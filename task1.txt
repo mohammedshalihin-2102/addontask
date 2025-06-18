@@ -1,17 +1,12 @@
-public class Task1 {
-    public static void main(String[] args) {
-        ArrayList<String> students = new ArrayList<>();
-
-      
-        students.add("Arun");
-        students.add("Divya");
-        students.add("Kiran");
-
-       
-        Iterator<String> iterator = students.iterator();
-        System.out.println("Student List:");
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Number: " + i);
         }
+    }
+
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start();
     }
 }

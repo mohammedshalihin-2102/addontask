@@ -1,15 +1,12 @@
-public class Task2 {
-    public static void main(String[] args) {
-        HashSet<String> emails = new HashSet<>();
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Hello from thread: " + Thread.currentThread().getName());
+    }
 
-       
-        emails.add("arun@example.com");
-        emails.add("divya@example.com");
-        emails.add("arun@example.com");  
-        
-        System.out.println("Unique Email Addresses:");
-        for (String email : emails) {
-            System.out.println(email);
-        }
+    public static void main(String[] args) {
+        Thread t1 = new Thread(new MyRunnable());
+        Thread t2 = new Thread(new MyRunnable());
+        t1.start();
+        t2.start();
     }
 }

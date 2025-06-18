@@ -1,25 +1,25 @@
-public class Task3 {
-    public static void main(String[] args) {
-        HashMap<String, Integer> studentMarks = new HashMap<>();
-
-        
-        studentMarks.put("Arun", 85);
-        studentMarks.put("Divya", 92);
-        studentMarks.put("Kiran", 78);
-
-        
-        int total = 0;
-        for (int marks : studentMarks.values()) {
-            total += marks;
+class SleepJoinExample extends Thread {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(Thread.currentThread().getName() + ": " + i);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
         }
-        double average = (double) total / studentMarks.size();
-
+    }
+public static void main(String[] args) {
+        SleepJoinExample t1 = new SleepJoinExample();
+        SleepJoinExample t2 = new SleepJoinExample();
         
-        System.out.println("Student Marks:");
-        for (Map.Entry<String, Integer> entry : studentMarks.entrySet()) {
-            System.out.println(entry.getKey() + " → " + entry.getValue());
+        t1.start();
+        try {
+            t1.join(); 
+        } catch (InterruptedException e) {
+            System.out.println(e);
         }
 
-        System.out.println("Average Marks: " + average);
+        t2.start();
     }
 }
